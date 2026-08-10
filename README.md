@@ -12,15 +12,11 @@ Servidor de descubrimiento de servicios (Service Discovery) para la arquitectura
 `src/main/resources/application.yml`:
 
 ```yaml
-server:
-  port: 8761
-
-eureka:
-  client:
-    register-with-eureka: false
-    fetch-registry: false
-  instance:
-    hostname: localhost
+spring:
+  application:
+    name: eureka-server
+  config:
+    import: configserver:http://localhost:8888
 ```
 
 ## Cómo correrlo
@@ -41,7 +37,12 @@ http://localhost:8761
 
 ## Orden de arranque
 
-Este servicio debe levantarse **primero**, antes que el Config Server y los microservicios (`product-service`, `customer-service`), ya que estos dependen de que Eureka esté disponible para registrarse.
+Como el puerto y demás configuración de cada servicio vienen del Config Server, el orden correcto es:
+
+1. Config Server
+2. Eureka Server
+3. product-service
+4. customer-service
 
 ## Notas
 
