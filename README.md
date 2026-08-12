@@ -6,10 +6,11 @@ Servidor de descubrimiento de servicios (Service Discovery) para la arquitectura
 
 - Spring Boot
 - Spring Cloud Netflix Eureka Server
+- Spring Cloud Config Client
 
 ## Configuración
 
-`src/main/resources/application.yml`:
+`src/main/resources/application.yaml`:
 
 ```yaml
 spring:
@@ -47,4 +48,3 @@ Como el puerto y demás configuración de cada servicio vienen del Config Server
 ## Notas
 
 - `register-with-eureka: false` y `fetch-registry: false` evitan que el propio Eureka Server intente registrarse a sí mismo como cliente.
-- No depende del Config Server — arranca de forma completamente independiente con su configuración local.
